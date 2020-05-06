@@ -22,9 +22,14 @@ subject_train <- read.table("UCI HAR Dataset/train/subject_train.txt", col.names
 x_train <- read.table("UCI HAR Dataset/train/X_train.txt", col.names = features$functions)
 y_train <- read.table("UCI HAR Dataset/train/y_train.txt", col.names = "code")
 
-##Merge the training and test sets to create one data set
+##Part 1 : Merge the training and test sets to create one data set
 X <- rbind(x_train, x_test)
 Y <- rbind(y_train, y_test)
 Subject <- rbind(subject_train, subject_test)
 Merged_Data <- cbind(Subject, Y, X)
 
+##Part 2 : Extracts only the measurements on the mean and standard deviation for each measurement.
+Tidy <- Merged_Data %>% select(subject, code, contains("mean"), contains("std"))
+
+##Part 3 :  Uses descriptive activity names to name the activities in the data set.
+Tidy$code <- activities[Tidy$code, 2]
