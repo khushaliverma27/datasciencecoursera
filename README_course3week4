@@ -1,0 +1,22 @@
+WEEK 4 : GETTING AND CLEANING DATA
+
+BY KHUSHALI VERMA | IIIT-DELHI
+
+PEER GRADED ASSIGNMENT: COURSE PROJECT
+
+THIS ASSIGNMENT HAS 3 FILES:
+
+1. run_analysis.R
+   This R script contains the loading and unzipping of data and further the    following 5 tasks executed on the data set
+   
+   - Merges the training and the test sets to create one data set.
+   - Extracts only the measurements on the mean and standard deviation for each measurement.
+   - Uses descriptive activity names to name the activities in the data set
+   - Appropriately labels the data set with descriptive variable names.
+   - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+   
+   
+When this script is run, the output in seen in Final Data.txt file.
+
+2. Code_Book
+   This contains the definition of all variables, what data they contains and what all changes (transformations) were made to this data to clean it up and complete the tasks.
