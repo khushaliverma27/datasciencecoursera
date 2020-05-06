@@ -33,3 +33,20 @@ Tidy <- Merged_Data %>% select(subject, code, contains("mean"), contains("std"))
 
 ##Part 3 :  Uses descriptive activity names to name the activities in the data set.
 Tidy$code <- activities[Tidy$code, 2]
+
+##Part 4 : Appropriately labels the data set with descriptive variable names.
+names(Tidy)[2] = "activity"
+names(Tidy)<-gsub("Acc", "Accelerometer", names(Tidy))
+names(Tidy)<-gsub("Gyro", "Gyroscope", names(Tidy))
+names(Tidy)<-gsub("BodyBody", "Body", names(Tidy))
+names(Tidy)<-gsub("Mag", "Magnitude", names(Tidy))
+names(Tidy)<-gsub("^t", "Time", names(Tidy))
+names(Tidy)<-gsub("^f", "Frequency", names(Tidy))
+names(Tidy)<-gsub("tBody", "TimeBody", names(Tidy))
+names(Tidy)<-gsub("-mean()", "Mean", names(Tidy), ignore.case = TRUE)
+names(Tidy)<-gsub("-std()", "STD", names(Tidy), ignore.case = TRUE)
+names(Tidy)<-gsub("-freq()", "Frequency", names(Tidy), ignore.case = TRUE)
+names(Tidy)<-gsub("angle", "Angle", names(Tidy))
+
+
+names(TidyData)<-gsub("gravity", "Gravity", names(TidyData))
