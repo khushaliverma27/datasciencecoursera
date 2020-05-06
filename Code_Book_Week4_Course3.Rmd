@@ -1,0 +1,73 @@
+---
+title: "Code_Book_Week4_Course3"
+author: "Khushali"
+date: "07/05/2020"
+output: html_document
+---
+
+This codebook contains all the data and variable definitions and any changes that were made to the data, step by step, to clean it and accomplish the 5 tasks.
+
+Step 1: Downloading the data set
+Step 2: Extracting the data in the file named UCI HAR Dataset.
+Step 3: Load data frames into variables as described below -
+        - features: Data from features.txt
+          The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ.
+          Number of rows: 561, Numbre of colums: 2
+          
+        - activities: Data from activity_labels.txt
+          List of activities performed when the corresponding measurements were taken and its codes (labels)
+          Number of rows: 6, Numbre of colums: 2
+          
+        - subject_test: Data from subject_test.txt
+          contains test data of 9/30 volunteer test subjects being observed
+          Number of rows: 2947, Numbre of colums: 1
+          
+        - x_test: Data from X_test.txt
+          contains recorded features test data
+          Number of rows: 2947, Numbre of colums: 561
+          
+        - y_test: Data from Y_test.txt
+          contains test data of activities’code labels
+          Number of rows: 2947, Numbre of colums: 1
+          
+        - subject_train: Data from subject_train.txt
+          contains train data of 21/30 volunteer subjects being observed
+          Number of rows: 7352, Numbre of colums: 1
+          
+        - x_train: Data from X_train.txt
+          contains recorded features train data
+          Number of rows: 7352, Numbre of colums: 561
+          
+        - y_train: Data from Y_train.txt
+          contains train data of activities’code labels
+          Number of rows: 7352, Numbre of colums: 1
+          
+          
+Step 4: Merging the training and test sets to create one data set
+- x_train and x_test are merged using rbind() to give one dataset(X) with 10299 rows and 561 columns
+
+- y_train and y_test and merged using rbind() to give one dataset(Y) with 10299 rows and 1 colum.
+
+- subject_train and subject_test are merged using rbind() to give one dataset(Subject) with 10299 rows and 1 column.
+
+- Now, the above 3 datasets produced are merged into one dataset by using cbind(). The single dataset called Merged_Data has 10299 rows and 563 columns.
+
+Step 5: Extracting only the measurements on the mean and std. deviation for each measurement
+- Tidy is the required data with 10299 rows and 88 columns, which is created by subsetting Merged_Data with the required constraints.
+
+Step 6: Using descriptive activity names to name the activities in the data set
+Number in code of Tidy replaced with the activity taken from second column of activities table.
+
+Step 7: Appropriately labels the data set with descriptive variable names
+- code column in Tidy renamed into activities
+- All Acc in column’s name replaced by Accelerometer
+- All Gyro in column’s name replaced by Gyroscope
+- All BodyBody in column’s name replaced by Body
+- All Mag in column’s name replaced by Magnitude
+- All start with character f in column’s name replaced by Frequency
+- All start with character t in column’s name replaced by Time
+
+Step 8: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
+Tidy data is summmarized to FinalData by taking the means of each variable for each activity and each subject after being grouped by subject and activity.
+
+The final output can be seen in FinalData.txt file.
