@@ -1,16 +1,16 @@
 ## Import the necessary libraries
 library(ggplot2)
 library(RColorBrewer)
+library(dplyr)
 
 ## Read the datasets
-summarySCC <- readRDS("summarySCC_PM25.rds")
+NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
 ## Plotting the graph
-baltimore <- subset(summarySCC, summarySCC$fips == "24510")
+baltimore <- subset(NEI, NEI$fips == "24510")
 baltimoreType <- aggregate(Emissions ~ year + type, baltimore, sum)
-
-png(file="J:/datasciencecoursera/Week4_Course4/Plot3.png",width=480, height=480)
+png(file="J:/datasciencecoursera/Week4_Course4/Plot3.png")
 ggplot(baltimoreType, aes(year, Emissions, col = type)) +
   geom_line() +
   geom_point() +
